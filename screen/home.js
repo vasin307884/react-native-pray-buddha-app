@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import {FlatList,StyleSheet,Text,View,TextInput,Button,TouchableHighlight,Image,Alert,WebView,TouchableOpacity,style} from 'react-native';
+import {FlatList,StyleSheet,Text,View,TextInput,Button,TouchableHighlight,Image,Alert,WebView,TouchableOpacity,style,ImageBackground} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Card from '../component/card';
+import styled from 'styled-components'
 import firebase from 'firebase';
 export default class HomeScreen extends Component {
   static navigationOptions =
@@ -19,10 +20,6 @@ export default class HomeScreen extends Component {
     firebase.database().ref('SONGLIST').on('value', (snapshot) => {
       var defaultdata = {
         songtitle : '',
-        songowner : '',
-        lyric : '',
-        video:''
-        
       }
       let data = snapshot.val()
       if(data == null){
@@ -39,8 +36,47 @@ export default class HomeScreen extends Component {
 }
   render() {
     return (
+      <ImageBackground style={{width:'100%',height:'100%'}}source = {require('../assets/bb.jpg')}>
       <ScrollView>
-      <View style={{backgroundColor: "#3CAEA3"}}>
+      <TouchableOpacity onPress={()=>this.props.navigation.navigate('POPLIST')}>
+      <Container>
+      <Item >
+        <Image style={{width:330,height:150,alignItems:'center',borderRadius:5}} source={{uri:'https://pixel.nymag.com/imgs/daily/vulture/2017/12/best-of-2017/11-yic-pop-essay.w1200.h630.jpg'}}/>
+      <Title >Pop Music</Title>
+      </Item>
+      </Container>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={()=>this.props.navigation.navigate('CLASSICLIST')}>
+      <Container>
+      <Item >
+        <Image style={{width:330,height:150,alignItems:'center',borderRadius:5}} source={{uri:'https://i.ytimg.com/vi/mOaxrp14Tus/maxresdefault.jpg'}}/>
+      <Title >Classical Music</Title>
+      </Item>
+      </Container>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={()=>this.props.navigation.navigate('TRAPLIST')}>
+      <Container>
+      <Item >
+        <Image style={{width:330,height:150,alignItems:'center',borderRadius:5}} source={{uri:'https://i.ytimg.com/vi/VHSmwpFf2Ms/maxresdefault.jpg'}}/>
+      <Title >Trap Hip-Hop Music</Title>
+      </Item>
+      </Container>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={()=>this.props.navigation.navigate('EDMLIST')}>
+      <Container>
+      <Item >
+        <Image style={{width:330,height:150,alignItems:'center',borderRadius:5}} source={{uri:'https://i.ytimg.com/vi/YGZ6KZ9TR-M/maxresdefault.jpg'}}/>
+      <Title >EDM Music</Title>
+      </Item>
+      </Container>
+      </TouchableOpacity>
+         
+        
+     
+     
+     
+     {/* <View style={{backgroundColor: "#A1045A"}}>
         <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center',marginTop:10,marginBottom:10}}>
         <Icon name="microphone" size={25} color='black'  />
         <TouchableOpacity style={{marginTop:5}} onPress={()=>this.props.navigation.navigate('Addsong')}>
@@ -50,17 +86,17 @@ export default class HomeScreen extends Component {
         </TouchableOpacity>
         </View>
         </View>
+    
 
-
-        <View style={{}}>
+      <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center',marginTop:10,marginBottom:10}}>
         <FlatList 
         data={this.state.data}
           renderItem={({ item }) => 
           <TouchableOpacity onPress={()=>this.props.navigation.navigate('Songdetail',item)}>
         <Card songtitle={item.songtitle}  
-        songowner={item.songowner}
+        
         image={{ uri: item.image }}
-        lyric={item.lyric}
+        
             /></TouchableOpacity>
           }
         />
@@ -73,6 +109,29 @@ export default class HomeScreen extends Component {
    
     
     </ScrollView>
+    </ImageBackground>
     );
   }
 }
+const Container=styled.View`
+    flex:1;
+    padding:10px;
+    justify-content:center;
+    align-items:center
+`
+const Title=styled.Text`
+margin:10px;
+font-size:20px;
+text-align:center;
+ color:white;
+ fontWeight:bold;
+`
+const Item=styled.View`
+flex:1;
+border:2px solid #ccc;
+margin:2px 0;
+border-radius:10px;
+width:100%;
+padding:10px;
+backgroundColor:black;
+`

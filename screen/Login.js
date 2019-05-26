@@ -10,7 +10,6 @@ import {
   Alert,ActivityIndicator,ImageBackground
 } from 'react-native';
 import firebase from 'firebase';
-
 export default class LoginScreen extends Component {
 
   constructor(props){
@@ -66,7 +65,8 @@ static navigationOptions = {
 
   render() {
     return (
-      <View style={styles.container}>
+        <ImageBackground style={{width:'100%',height:'100%'}}source = {require('../assets/bg.png')}>
+        <View style={styles.container}>
         <View style={styles.inputContainer}>
           <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
           <TextInput style={styles.inputs}
@@ -101,7 +101,8 @@ static navigationOptions = {
         <Text style={{fontSize:20,fontWeight:'bold',color:'red'}}>
           {this.state.error}
         </Text>
-      </View>
+        </View>
+        </ImageBackground>
     
     );
   }
@@ -112,7 +113,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'black',
+
   },
   inputContainer: {
       borderBottomColor: '#F5FCFF',

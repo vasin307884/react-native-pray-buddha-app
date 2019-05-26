@@ -7,6 +7,11 @@ import LoginScreen from './screen/Login';
 import Songdetail from './screen/songdetail';
 import Addsong from './screen/addsong';
 import Register from './screen/register';
+import LandingPage from './screen/landingpage';
+import POPLIST from './screen/poplist';
+import CLASSICLIST from './screen/classiclist';
+import TRAPLIST from './screen/traplist';
+import EDMLIST from './screen/edmlist';
 const Loginnavigator = createStackNavigator({
   Login : {screen : LoginScreen},
 })
@@ -16,17 +21,23 @@ const LandingNavigator= createSwitchNavigator({
 })
 const AppNavigator = createStackNavigator(
   {
+    Landing:LandingPage,
     Home: HomeScreen,
     Login: LoginScreen,
     Songdetail : Songdetail,
     Addsong:Addsong,
-    Register:Register
+    Register:Register,
+    POPLIST : POPLIST,
+    CLASSICLIST : CLASSICLIST,
+    TRAPLIST : TRAPLIST,
+    EDMLIST : EDMLIST
   },
   {
-    initialRouteName: "Login",
+    initialRouteName: "Landing",
+    
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: "#3CAEA3",
+        backgroundColor: "#DC2B50",
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
