@@ -54,7 +54,7 @@ export default class POPLIST extends Component {
           /*onPress={() =>  Linking.openURL(item.video)}*/
         <Card2 songtitle={item.songtitle}  
         owner={item.owner}
-        image={{ uri: item.image }}
+        image={item.image}
         video ={item.video}
         />
           }

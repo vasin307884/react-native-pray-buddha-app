@@ -65,7 +65,7 @@ static navigationOptions = {
 
   render() {
     return (
-        <ImageBackground style={{width:'100%',height:'100%'}}source = {require('../assets/bg.png')}>
+        <ImageBackground style={{width:'100%',height:'100%'}}source = {require('../assets/new.jpg')}>
         <View style={styles.container}>
         <View style={styles.inputContainer}>
           <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     borderRadius:30,
   },
   loginButton: {
-    backgroundColor: "#3CAEA3",
+    backgroundColor: "#DC2B50",
   },
   loginText: {
     color: 'white',

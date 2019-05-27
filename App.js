@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView,Image, StyleSheet, Text, View } from 'react-native';
-import { createStackNavigator, createAppContainer,createSwitchNavigator, DrawerNavigator } from "react-navigation";
+import { createBottomTabNavigator,createStackNavigator, createAppContainer,createSwitchNavigator, DrawerNavigator } from "react-navigation";
 import firebase from 'firebase';
 import HomeScreen from './screen/home'
 import LoginScreen from './screen/Login';
@@ -12,6 +12,11 @@ import POPLIST from './screen/poplist';
 import CLASSICLIST from './screen/classiclist';
 import TRAPLIST from './screen/traplist';
 import EDMLIST from './screen/edmlist';
+import {createMaterialBottomTabNavigator} from'react-navigation-material-bottom-tabs'
+import PlaylistScreen from './screen/playlist';
+import Icon from 'react-native-vector-icons/Ionicons'
+import { Tabs } from 'native-base';
+import Card2 from './component/card2';
 const Loginnavigator = createStackNavigator({
   Login : {screen : LoginScreen},
 })
@@ -21,8 +26,10 @@ const LandingNavigator= createSwitchNavigator({
 })
 const AppNavigator = createStackNavigator(
   {
+    Home:HomeScreen,
+    Playlist:PlaylistScreen,
+    Card2: Card2,
     Landing:LandingPage,
-    Home: HomeScreen,
     Login: LoginScreen,
     Songdetail : Songdetail,
     Addsong:Addsong,
@@ -30,7 +37,7 @@ const AppNavigator = createStackNavigator(
     POPLIST : POPLIST,
     CLASSICLIST : CLASSICLIST,
     TRAPLIST : TRAPLIST,
-    EDMLIST : EDMLIST
+    EDMLIST : EDMLIST,
   },
   {
     initialRouteName: "Landing",
@@ -47,8 +54,29 @@ const AppNavigator = createStackNavigator(
 
   }
   );
+const Bottomtab = createBottomTabNavigator({
+Home:{screen:HomeScreen,
+  
+navigationOptions:{
+  tabBarLabel:'Home',
+  tabBarIcon:({tintColor})=>(
+<Icon name="ios-home" color ={tintColor} size={24}/>
+  )
+}},
+Playlist:{screen:PlaylistScreen,
+  navigationOptions:{
+    tabBarLabel:'PlayLists',
+    tabBarIcon:({tintColor})=>(
+  <Icon name="ios-settings" color ={tintColor} size={24}/>
+    )
+  }
+}
+},{
 
-  const AppContainer = createAppContainer(AppNavigator,LandingNavigator);
+ //order:['Home','Playlist'],
+activeTintColor:'#DC2B50'
+})
+  const AppContainer = createAppContainer(AppNavigator,LandingNavigator,Loginnavigator,Bottomtab);
   console.disableYellowBox = true;
 export default class App extends React.Component {
   componentWillMount() {
@@ -61,6 +89,14 @@ export default class App extends React.Component {
       messagingSenderId: "398757346778"
     };
     firebase.initializeApp(config);
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ loggedIn: true })
+      } else {
+        this.setState({ loggedIn: false })
+      }
+    })
+
   }
   render() {
     return(

@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import {FlatList,StyleSheet,Text,View,TextInput,Button,TouchableHighlight,Image,Alert,WebView,TouchableOpacity,style,ImageBackground,Linking} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome'
-import Card2 from '../component/card2';
+import Card3 from '../component/card3';
 import styled from 'styled-components'
 import firebase from 'firebase';
-export default class CLASSICLIST extends Component {
+import {Audio} from 'expo';
+export default class PlaylistScreen extends Component {
   static navigationOptions =
    {
-    title: 'Classical Music Lists'
+    title: 'Play Lists'
   
   };
   constructor(props) {
@@ -17,7 +18,7 @@ export default class CLASSICLIST extends Component {
   }
   
   componentDidMount() {
-    firebase.database().ref('CLASSICLIST').on('value', (snapshot) => {
+    firebase.database().ref('userplaylist').orderByChild('userId').equalTo(firebase.auth().currentUser.uid).on('value', (snapshot) => {
       var defaultdata = {
         songtitle : '',
         owner : '',
@@ -33,9 +34,13 @@ export default class CLASSICLIST extends Component {
        
       }
     }
-  
-    
     )
+}
+Delete(item){
+    firebase.database().ref('userplaylist').orderByChild('songtitle').equalTo(item.songtitle).on('child_added',(sn)=>{
+        firebase.database().ref('userplaylist/'+sn.key).remove()
+    })
+
 }
   render() {
     return (
@@ -46,17 +51,21 @@ export default class CLASSICLIST extends Component {
     
 
       <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center',marginTop:10,marginBottom:10}}>
+      
         <FlatList 
         data={this.state.data}
           renderItem={({ item }) => 
-          
-        <Card2 songtitle={item.songtitle}  
+          <TouchableOpacity onLongPress={()=>this.Delete(item)}>
+        <Card3 songtitle={item.songtitle}  
         owner={item.owner}
-        image={item.image }
-        video={item.video}
+        image={item.image}
+        video ={item.video}
         />
+        </TouchableOpacity>
           }
+          
         />
+        
        </View>
    
     

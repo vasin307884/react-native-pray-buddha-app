@@ -52,7 +52,7 @@ export default class EDMLIST extends Component {
           
         <Card2 songtitle={item.songtitle}  
         owner={item.owner}
-        image={{ uri: item.image }}
+        image={item.image }
         video={item.video}
         />
           }

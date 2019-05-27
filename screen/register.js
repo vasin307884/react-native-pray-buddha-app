@@ -7,7 +7,7 @@ import {
   Button,
   TouchableHighlight,
   Image,
-  Alert,ActivityIndicator
+  Alert,ActivityIndicator,ImageBackground
 } from 'react-native';
 import firebase from 'firebase';
 
@@ -56,6 +56,7 @@ static navigationOptions = {
 
   render() {
     return (
+      <ImageBackground style={{width:'100%',height:'100%'}}source = {require('../assets/bgnew.png')}>
       <View style={styles.container}>
         <View style={styles.inputContainer}>
           <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
@@ -96,6 +97,7 @@ static navigationOptions = {
           {this.state.error}
         </Text>
       </View>
+      </ImageBackground>
     );
   }
 }
@@ -105,7 +107,7 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: 'black',
+     
     },
     inputContainer: {
         borderBottomColor: '#F5FCFF',
@@ -140,7 +142,7 @@ const styles = StyleSheet.create({
       borderRadius:30,
     },
     loginButton: {
-      backgroundColor: "#3CAEA3",
+      backgroundColor: "#DC2B50",
     },
     loginText: {
       color: 'white',

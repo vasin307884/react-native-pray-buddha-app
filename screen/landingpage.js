@@ -17,7 +17,7 @@ export default class LandingPage extends Component {
         <View style={{alignItems:'center',justifyContent:'center',marginTop:325}}>
         <TouchableHighlight 
         style={{borderWidth:2,borderColor:'white',borderRadius:10,height:80,width:250,justifyContent:'center',alignItems:'center'}} 
-        onPress={() => this.props.navigation.navigate('Home')}>
+        onPress={() => this.props.navigation.navigate('Login')}>
             <Text style={{fontWeight:'bold',color:'white',fontSize:30}}>Get Started !</Text>
         </TouchableHighlight>
         {/*}

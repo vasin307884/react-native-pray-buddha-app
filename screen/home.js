@@ -37,7 +37,23 @@ export default class HomeScreen extends Component {
   render() {
     return (
       <ImageBackground style={{width:'100%',height:'100%'}}source = {require('../assets/bb.jpg')}>
-      <ScrollView>
+        <View style={{flex: 1, flexDirection: 'row'}}>
+        <View style={{width: '50%', height: 50, backgroundColor: '#DC2B50',borderWidth:0.5,borderColor:'white' }} >
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Home')}>
+          <Text style={{fontSize:15,fontWeight:'bold',textAlign:'center',marginTop:10,color:'white'}}>Home</Text>
+          </TouchableOpacity>
+        </View>
+  
+
+        
+        <View style={{width: '50%', height: 50, backgroundColor: '#DC2B50',borderWidth:0.5,borderColor:'white' }}>
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate('Playlist')}>
+          <Text style={{fontSize:15,fontWeight:'bold',textAlign:'center',marginTop:10,color:'white'}}>Play Lists</Text>
+          </TouchableOpacity>
+        </View>
+        
+      </View>
+      <ScrollView style={{marginTop:50}}>
       <TouchableOpacity onPress={()=>this.props.navigation.navigate('POPLIST')}>
       <Container>
       <Item >
@@ -107,9 +123,11 @@ export default class HomeScreen extends Component {
        />*/}
        
    
-    
+
     </ScrollView>
+  
     </ImageBackground>
+    
     );
   }
 }

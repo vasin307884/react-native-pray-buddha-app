@@ -6,7 +6,7 @@ import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import {CheckBox, Item} from 'native-base'
 import {Audio} from'expo';
 import firebase from 'firebase'
-export default class Card2 extends React.Component {
+export default class Card3 extends React.Component {
   constructor(props){
     super(props);
     this.playbackObject = new Audio.Sound();
@@ -54,7 +54,6 @@ export default class Card2 extends React.Component {
     <Icon name="caretright" size={30} color='white' onPress={this.btnPlayerClicked} style={{marginLeft:10}}/>
     <Icon name="pause" size={30} color='white' onPress={this.btnStopPlayerClicked} style={{marginLeft:30}}/>
     <Icon2 name="replay" size={30} color='white' onPress={this.btnReplayClicked} style={{marginLeft:30}}/>
-    <Icon name="plus" size={30} color='white' style={{marginLeft:30}} onPress={() => this.submitOrder()}/>
     </View>
     </View> 
  
