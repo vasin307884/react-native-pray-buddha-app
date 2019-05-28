@@ -5,10 +5,11 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import Card2 from '../component/card2';
 import styled from 'styled-components'
 import firebase from 'firebase';
-export default class CLASSICLIST extends Component {
+import {Audio} from 'expo';
+export default class PRAYLIST extends Component {
   static navigationOptions =
    {
-    title: 'Classical Music Lists'
+    title: 'บทสวดมนต์'
   
   };
   constructor(props) {
@@ -17,10 +18,9 @@ export default class CLASSICLIST extends Component {
   }
   
   componentDidMount() {
-    firebase.database().ref('CLASSICLIST').on('value', (snapshot) => {
+    firebase.database().ref('POPLIST').on('value', (snapshot) => {
       var defaultdata = {
         songtitle : '',
-        owner : '',
         video:'',
         image:'',
       }
@@ -39,7 +39,7 @@ export default class CLASSICLIST extends Component {
 }
   render() {
     return (
-      <ImageBackground style={{width:'100%',height:'100%'}}source = {require('../assets/bb.jpg')}>
+      <ImageBackground style={{width:'100%',height:'100%'}}source = {require('../assets/test.jpg')}>
       <ScrollView>
         
      
@@ -50,10 +50,10 @@ export default class CLASSICLIST extends Component {
         data={this.state.data}
           renderItem={({ item }) => 
           
+          /*onPress={() =>  Linking.openURL(item.video)}*/
         <Card2 songtitle={item.songtitle}  
-        owner={item.owner}
-        image={item.image }
-        video={item.video}
+        image={item.image}
+        video ={item.video}
         />
           }
         />

@@ -11,7 +11,7 @@ export default class Songdetail extends React.Component {
   
   };
   render() {
-    const {songtitle,owner,lyric,video,list} = this.props.navigation.state.params;
+    const {songtitle,owner,lyric,video} = this.props.navigation.state.params;
 
     return (
         <ScrollView>

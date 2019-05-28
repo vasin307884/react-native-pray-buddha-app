@@ -10,7 +10,7 @@ export default class Card2 extends React.Component {
   constructor(props){
     super(props);
     this.playbackObject = new Audio.Sound();
-  this.state = {title : this.props.songtitle,image:this.props.image,owner:this.props.owner,video:this.props.video}
+  this.state = {title : this.props.songtitle,image:this.props.image,video:this.props.video}
 
   }
   btnStopPlayerClicked = async()=>{
@@ -27,14 +27,13 @@ export default class Card2 extends React.Component {
   submitOrder(){
     let myOrder = {
         songtitle:this.state.title,
-        owner:this.state.owner,
         video:this.state.video,
         image : this.state.image,
         userId:firebase.auth().currentUser.uid,
     }
 
     firebase.database().ref('userplaylist').push(myOrder)
-    alert('You have added '+this.state.title+' in your playList')
+    alert('ท่านได้เพิ่ม '+this.state.title+' ลงในบทสวดมนต์ของฉัน')
 
 
       
@@ -48,13 +47,12 @@ export default class Card2 extends React.Component {
     <Image style={{height:100,width:125}} source = {{uri:this.props.image}}/>
     </View>
     <View style = {{flex:2}}>
-    <Text style = {{fontSize : 18 , fontWeight : 'bold',color:'white',marginLeft:10}}>{this.props.songtitle}</Text>
-    <Text style = {{fontSize : 18 ,color:'white',marginLeft:10}}> By ({this.props.owner}) </Text>
+    <Text style = {{fontSize : 18 , fontWeight : 'bold',color:'black',marginLeft:10}}>{this.props.songtitle}</Text>
     <View style={{flex:1,flexDirection:'row',marginTop:5}}>
-    <Icon name="caretright" size={30} color='white' onPress={this.btnPlayerClicked} style={{marginLeft:10}}/>
-    <Icon name="pause" size={30} color='white' onPress={this.btnStopPlayerClicked} style={{marginLeft:30}}/>
-    <Icon2 name="replay" size={30} color='white' onPress={this.btnReplayClicked} style={{marginLeft:30}}/>
-    <Icon name="plus" size={30} color='white' style={{marginLeft:30}} onPress={() => this.submitOrder()}/>
+    <Icon name="caretright" size={30} color='black' onPress={this.btnPlayerClicked} style={{marginLeft:10}}/>
+    <Icon name="pause" size={30} color='black' onPress={this.btnStopPlayerClicked} style={{marginLeft:30}}/>
+    <Icon2 name="replay" size={30} color='black' onPress={this.btnReplayClicked} style={{marginLeft:30}}/>
+    <Icon name="plus" size={30} color='black' style={{marginLeft:30}} onPress={() => this.submitOrder()}/>
     </View>
     </View> 
  

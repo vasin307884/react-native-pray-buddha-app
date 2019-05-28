@@ -13,12 +13,12 @@ navBarHidden:true
 export default class LandingPage extends Component {
   render() {
     return (
-        <ImageBackground style={{width:'100%',height:'100%'}}source = {require('../assets/nl.jpg')}>
+        <ImageBackground style={{width:'100%',height:'100%'}}source = {require('../assets/newlanding.jpg')}>
         <View style={{alignItems:'center',justifyContent:'center',marginTop:325}}>
         <TouchableHighlight 
         style={{borderWidth:2,borderColor:'white',borderRadius:10,height:80,width:250,justifyContent:'center',alignItems:'center'}} 
         onPress={() => this.props.navigation.navigate('Login')}>
-            <Text style={{fontWeight:'bold',color:'white',fontSize:30}}>Get Started !</Text>
+            <Text style={{fontWeight:'bold',color:'white',fontSize:30}}>เริ่มต้นใช้งาน !</Text>
         </TouchableHighlight>
         {/*}
         <TouchableHighlight style={styles.buttonContainer} onPress={() => this.props.navigation.navigate('MainUser')}>

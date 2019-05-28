@@ -9,7 +9,7 @@ import {Audio} from 'expo';
 export default class PlaylistScreen extends Component {
   static navigationOptions =
    {
-    title: 'Play Lists'
+    title: 'บทสวดมนต์ของฉัน'
   
   };
   constructor(props) {
@@ -21,7 +21,6 @@ export default class PlaylistScreen extends Component {
     firebase.database().ref('userplaylist').orderByChild('userId').equalTo(firebase.auth().currentUser.uid).on('value', (snapshot) => {
       var defaultdata = {
         songtitle : '',
-        owner : '',
         video:'',
         image:'',
       }
@@ -44,10 +43,11 @@ Delete(item){
 }
   render() {
     return (
-      <ImageBackground style={{width:'100%',height:'100%'}}source = {require('../assets/bb.jpg')}>
+      <ImageBackground style={{width:'100%',height:'100%'}}source = {require('../assets/test.jpg')}>
+      <Text style={{fontSize:15,fontWeight:'bold',color:'red',textAlign:'center'}}>! กดค้างเพื่อลบออกจากลิสต์ !</Text>
       <ScrollView>
         
-     
+      
     
 
       <View style={{flex: 1, flexDirection: 'row', alignItems: 'center',justifyContent: 'center',marginTop:10,marginBottom:10}}>
@@ -57,7 +57,6 @@ Delete(item){
           renderItem={({ item }) => 
           <TouchableOpacity onLongPress={()=>this.Delete(item)}>
         <Card3 songtitle={item.songtitle}  
-        owner={item.owner}
         image={item.image}
         video ={item.video}
         />

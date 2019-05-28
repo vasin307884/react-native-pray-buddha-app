@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import {FlatList,StyleSheet,Text,View,TextInput,Button,TouchableHighlight,Image,Alert,WebView,TouchableOpacity,style,ImageBackground,Linking} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome'
-import Card2 from '../component/card2';
+import Card4 from '../component/card4';
 import styled from 'styled-components'
 import firebase from 'firebase';
-export default class EDMLIST extends Component {
+export default class DAILYHELLO extends Component {
   static navigationOptions =
    {
-    title: 'EDM Music Lists'
+    title: 'คำสวัสดีทักทายประจำวัน'
   
   };
   constructor(props) {
@@ -17,11 +17,8 @@ export default class EDMLIST extends Component {
   }
   
   componentDidMount() {
-    firebase.database().ref('EDMLIST').on('value', (snapshot) => {
+    firebase.database().ref('DAILYHELLO').on('value', (snapshot) => {
       var defaultdata = {
-        songtitle : '',
-        owner : '',
-        video:'',
         image:'',
       }
       let data = snapshot.val()
@@ -39,7 +36,8 @@ export default class EDMLIST extends Component {
 }
   render() {
     return (
-      <ImageBackground style={{width:'100%',height:'100%'}}source = {require('../assets/bb.jpg')}>
+      <ImageBackground style={{width:'100%',height:'100%'}}source = {require('../assets/test.jpg')}>
+        <Text style={{fontSize:15,fontWeight:'bold',color:'red',textAlign:'center'}}>กดค้างเพื่อแชร์รูป</Text>
       <ScrollView>
         
      
@@ -50,10 +48,8 @@ export default class EDMLIST extends Component {
         data={this.state.data}
           renderItem={({ item }) => 
           
-        <Card2 songtitle={item.songtitle}  
-        owner={item.owner}
+        <Card4 
         image={item.image }
-        video={item.video}
         />
           }
         />

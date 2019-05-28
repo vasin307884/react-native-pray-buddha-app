@@ -6,7 +6,7 @@ import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import {CheckBox, Item} from 'native-base'
 import {Audio} from'expo';
 import firebase from 'firebase'
-export default class Card3 extends React.Component {
+export default class Card5 extends React.Component {
   constructor(props){
     super(props);
     this.playbackObject = new Audio.Sound();
@@ -29,14 +29,13 @@ export default class Card3 extends React.Component {
     return (
     <View style = {{flex:1, flexDirection:'row',borderWidth: 0.5,borderColor: 'black',marginBottom:2,marginRight:5,borderRadius:10}}>   
     <View style={{marginLeft:5,flex:1,borderWidth: 1,borderColor: 'black'}}>
-    <Image style={{height:100,width:125}} source = {{uri:this.props.image}}/>
+    <Image style={{height:100,width:120}} source = {{uri:this.props.image}}/>
     </View>
     <View style = {{flex:2}}>
-    <Text style = {{fontSize : 18 , fontWeight : 'bold',color:'black',marginLeft:10}}>{this.props.songtitle}</Text>
-    <View style={{flex:1,flexDirection:'row',marginTop:5}}>
-    <Icon name="caretright" size={30} color='black' onPress={this.btnPlayerClicked} style={{marginLeft:10}}/>
-    <Icon name="pause" size={30} color='black' onPress={this.btnStopPlayerClicked} style={{marginLeft:30}}/>
-    <Icon2 name="replay" size={30} color='black' onPress={this.btnReplayClicked} style={{marginLeft:30}}/>
+    <Text style = {{fontSize : 25 , fontWeight : 'bold',color:'black',marginLeft:10}}>{this.props.dayname}</Text>
+    <View style={{flex:1,flexDirection:'column',marginTop:5}}>
+    <Text style = {{fontSize : 18 ,color:'black',marginLeft:10}}>{this.props.date}</Text>
+    <Text style = {{fontSize : 18 ,color:'black',marginLeft:10,marginTop:10}}>อ่านเพิ่มเติม...</Text>
     </View>
     </View> 
  

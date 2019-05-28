@@ -8,15 +8,15 @@ import Songdetail from './screen/songdetail';
 import Addsong from './screen/addsong';
 import Register from './screen/register';
 import LandingPage from './screen/landingpage';
-import POPLIST from './screen/poplist';
-import CLASSICLIST from './screen/classiclist';
-import TRAPLIST from './screen/traplist';
-import EDMLIST from './screen/edmlist';
+import PRAYLIST from './screen/prayerlist';
+import DAILYHELLO from './screen/dailyhello';
+import BUDDISHDAY from './screen/dayinbuddha';
 import {createMaterialBottomTabNavigator} from'react-navigation-material-bottom-tabs'
 import PlaylistScreen from './screen/playlist';
 import Icon from 'react-native-vector-icons/Ionicons'
 import { Tabs } from 'native-base';
 import Card2 from './component/card2';
+import Daydetail from './screen/daydetail';
 const Loginnavigator = createStackNavigator({
   Login : {screen : LoginScreen},
 })
@@ -34,10 +34,11 @@ const AppNavigator = createStackNavigator(
     Songdetail : Songdetail,
     Addsong:Addsong,
     Register:Register,
-    POPLIST : POPLIST,
-    CLASSICLIST : CLASSICLIST,
-    TRAPLIST : TRAPLIST,
-    EDMLIST : EDMLIST,
+    PRAYLIST : PRAYLIST,
+    DAILYHELLO: DAILYHELLO,
+    BUDDISHDAY : BUDDISHDAY,
+    DAYDETAIL : Daydetail
+    
   },
   {
     initialRouteName: "Landing",

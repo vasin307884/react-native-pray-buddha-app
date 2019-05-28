@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import {FlatList,StyleSheet,Text,View,TextInput,Button,TouchableHighlight,Image,Alert,WebView,TouchableOpacity,style,ImageBackground,Linking} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome'
-import Card2 from '../component/card2';
+import Card5 from '../component/card5';
 import styled from 'styled-components'
 import firebase from 'firebase';
-export default class TRAPLIST extends Component {
+export default class BUDDISHDAY extends Component {
   static navigationOptions =
    {
-    title: 'Trap Music Lists'
+    title: 'วันสำคัญทางพระพุทธศาสนา'
   
   };
   constructor(props) {
@@ -17,11 +17,11 @@ export default class TRAPLIST extends Component {
   }
   
   componentDidMount() {
-    firebase.database().ref('TRAPLIST').on('value', (snapshot) => {
+    firebase.database().ref('BUDDISHDAY').on('value', (snapshot) => {
       var defaultdata = {
-        songtitle : '',
-        owner : '',
-        video:'',
+        dayname : '',
+        date:'',
+        detail : '',
         image:'',
       }
       let data = snapshot.val()
@@ -39,7 +39,7 @@ export default class TRAPLIST extends Component {
 }
   render() {
     return (
-      <ImageBackground style={{width:'100%',height:'100%'}}source = {require('../assets/bb.jpg')}>
+      <ImageBackground style={{width:'100%',height:'100%'}}source = {require('../assets/test.jpg')}>
       <ScrollView>
         
      
@@ -49,12 +49,13 @@ export default class TRAPLIST extends Component {
         <FlatList 
         data={this.state.data}
           renderItem={({ item }) => 
-         
-        <Card2 songtitle={item.songtitle}  
-        owner={item.owner}
+         <TouchableOpacity onPress={()=>this.props.navigation.navigate('DAYDETAIL',item)}>
+        <Card5 dayname={item.dayname}
+        date={item.date}  
         image={item.image }
-        video={item.video}
+        detail={item.detail}
         />
+        </TouchableOpacity>
           }
         />
        </View>

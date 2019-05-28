@@ -49,7 +49,7 @@ static navigationOptions = {
     }
     return (
       <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={this.onButtonPress.bind(this)}>
-          <Text style={styles.loginText}>Register</Text>
+          <Text style={styles.loginText}>สมัครสมาชิก</Text>
         </TouchableHighlight>
     );
   }

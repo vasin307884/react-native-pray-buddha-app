@@ -16,10 +16,6 @@ export default class LoginScreen extends Component {
     super(props)
     this.state = {email : '',password : '',error : '',loading:false}
 }
-
-static navigationOptions = {
-    title: 'Authentication',
-  }
   onButtonPress() {
     this.setState({ error: '', loading: true })
     const { email, password } = this.state;
@@ -58,7 +54,7 @@ static navigationOptions = {
     }
     return (
       <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={this.onButtonPress.bind(this)}>
-          <Text style={styles.loginText}>Login</Text>
+          <Text style={styles.loginText}>เข้าสู่ระบบ</Text>
         </TouchableHighlight>
     );
   }
@@ -89,7 +85,7 @@ static navigationOptions = {
 
         {this.renderButton()}
         <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={() => this.props.navigation.navigate('Register')}>
-          <Text style={styles.loginText}>Register</Text>
+          <Text style={styles.loginText}>สมัครสมาชิก</Text>
         </TouchableHighlight>
         <TouchableHighlight style={styles.buttonContainer} onPress={() => this.props.navigation.navigate('Home')}>
             <Text style={{fontWeight:'bold',color:'white'}}>Guest</Text>
